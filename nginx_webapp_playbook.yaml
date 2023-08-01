@@ -1,0 +1,18 @@
+---
+
+- name: "Deploy webapp with collection roles"
+  hosts: "webservers"
+  vars_files:
+    - vars/logos.yaml
+
+  tasks:
+    - name: "Run nginx role from collection mansourka06.webapp"
+      import_role:
+        name: mansourka06.webapp.nginx
+    - name: "Run webapp role from collection mansourka06.webapp"
+      import_role:
+        name: mansourka06.webapp.webapp
+      vars:
+        target_dir: "{%- if ansible_distribution == 'CentOS' -%}/usr/share/nginx/html{%- elif ansible_distribution == 'Ubuntu' -%}/var/www/html{%- endif %}"
+
+...

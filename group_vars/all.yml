@@ -1,0 +1,9 @@
+---
+
+ansible_become: true
+ansible_user: vagrant
+ansible_port: 22
+nginx_root_location: "{% if ansible_os_family == 'RedHat' %}/usr/share/nginx/html{%else%}/var/www/html{%endif%}"
+webapp_name: DIVE-INTO-ANSIBLE
+
+...
