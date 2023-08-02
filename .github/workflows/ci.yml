@@ -1,18 +1,17 @@
 ---
-# CI pipeline for ansible-collection-webapp
 name: CI
 'on':
   push:
     branches:
       - main
-    
+
 defaults:
   run:
     working-directory: 'ansible-webapp'
-    
+
 jobs:
   molecule:
-    name: Molecule - Test Ansible Playbook
+    name: Molecule - Test playbook
     runs-on: ubuntu-latest
 
     steps:
@@ -26,9 +25,8 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install test dependencies.
+      - name: Install test dependencies
         run: pip3 install ansible molecule[docker] docker
 
       - name: Run Molecule tests
         run: molecule test
----
