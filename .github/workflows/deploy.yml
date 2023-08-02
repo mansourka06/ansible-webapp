@@ -2,8 +2,8 @@
 name: Deploy Webapp
 'on':
   push:
-    branches:
-      - main
+    tags:
+    - '*'
 jobs:
   deploy:
     name: Deploy to production
